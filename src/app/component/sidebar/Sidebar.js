@@ -14,7 +14,19 @@ const SideBar = () => {
     <div className=" rounded shadow-2xl p-4 h-auto mb-20 ">
       <div className="flex justify-between gap-5  items-center cursor-pointer">
         <div className="text-blue-400 text-xl">Filters</div>
-        <div className="text-orange-400 ">Reset</div>
+        <a
+          className="text-orange-400 no-underline"
+          onClick={() => {
+            handleState({
+              sectorfilter: [],
+              tagFilter: [],
+              geoFilter: [],
+              typeFilter: [],
+            });
+          }}
+        >
+          Reset
+        </a>
       </div>
       <div>
         <div className="my-5">

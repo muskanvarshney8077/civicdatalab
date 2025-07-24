@@ -36,7 +36,7 @@ const Search = () => {
               height={35}
               width={35}
               onClick={() => {
-                handleState({ gridClick: "four" });
+                handleState({ gridClick: "four", size: 3 });
               }}
             />
           )}
@@ -52,7 +52,7 @@ const Search = () => {
               height={35}
               width={35}
               onClick={() => {
-                handleState({ gridClick: "two" });
+                handleState({ gridClick: "two", size: 5 });
               }}
             />
           )}
