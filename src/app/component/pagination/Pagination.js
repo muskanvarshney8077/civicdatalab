@@ -5,7 +5,7 @@ import double_left from "../../assets/pagination/double-left.png";
 import right from "../../assets/pagination/right.png";
 import double_right from "../../assets/pagination/double-right.png";
 import Image from "next/image";
-import { useMyContext } from "@/app/context/page";
+import { useMyContext } from "@/app/context/Context";
 
 const Pagination = () => {
   const { state, handleState } = useMyContext();
@@ -32,7 +32,7 @@ const Pagination = () => {
             ))}
         </select>
       </div>
-      <div>{`Page ${state.page} of ${totalPage}`}</div>
+      <div>{`Page ${state.page} of ${totalPage ? totalPage : 1}`}</div>
       <div className="flex gap-5">
         <Image
           src={double_left}
@@ -76,12 +76,12 @@ const Pagination = () => {
           height={15}
           alt="pagination"
           className={`${
-            state.page === totalPage
+            state.page === totalPage || totalPage === 0
               ? "cursor-not-allowed opacity-[50%]"
               : "cursor-pointer"
           }`}
           onClick={() => {
-            if (state.page === totalPage) {
+            if (state.page === totalPage || totalPage === 0) {
               return null;
             } else {
               handleState({ page: state.page + 1 });
@@ -94,12 +94,12 @@ const Pagination = () => {
           height={15}
           alt="pagination"
           className={`${
-            state.page === totalPage
+            state.page === totalPage || totalPage === 0
               ? "cursor-not-allowed opacity-[50%]"
               : "cursor-pointer"
           }`}
           onClick={() => {
-            if (state.page === totalPage) {
+            if (state.page === totalPage || totalPage === 0) {
               return null;
             } else {
               handleState({ page: totalPage });

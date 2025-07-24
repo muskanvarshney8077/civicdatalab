@@ -1,9 +1,9 @@
-import Content from "./component/content/page";
-import Footer from "./component/footer/page";
-import Navbar from "./component/navbar/page";
-import Search from "./component/searchbar/page";
-import SideBar from "./component/sidebar/page";
-import { DataProvider } from "./context/page";
+import Content from "./component/content/Content";
+import Footer from "./component/footer/Footer";
+import Navbar from "./component/navbar/Navbar";
+import Search from "./component/searchbar/SearchBar";
+import SideBar from "./component/sidebar/Sidebar";
+import { DataProvider } from "./context/Context";
 
 export default function Home() {
   return (

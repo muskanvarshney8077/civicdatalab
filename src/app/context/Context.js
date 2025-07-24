@@ -11,6 +11,11 @@ const DataProvider = ({ children }) => {
       tags: [],
       type: [],
     },
+    sectorfilter: [],
+    tagFilter: [],
+    typeFilter: [],
+    geoFilter: [],
+
     mainData: [],
     totals: 1,
     checkboxBlockCollapse: {
@@ -26,6 +31,7 @@ const DataProvider = ({ children }) => {
     size: 3,
     sort: "recent",
     order: "asc",
+    searchText: "",
   };
   const reducer = (state, newState) => {
     return { ...state, ...newState };
@@ -63,16 +69,30 @@ const DataProvider = ({ children }) => {
         tags: tags,
         type: type,
       },
-      totals: data.data.total,
     });
   };
   const fetchMainData = async () => {
+    let Query = "";
+    if (state.sectorfilter.length) {
+      Query = `&sectors=${state.sectorfilter.join("+")}`;
+    }
+    if (state.geoFilter.length) {
+      Query = `&Geography=${state.geoFilter.join("+")}`;
+    }
+    if (state.tagFilter.length) {
+      Query = `&tags=${state.tagFilter.join("+")}`;
+    }
+    if (state.typeFilter.length) {
+      Query = `&formats=${state.typeFilter.join("+")}`;
+    }
     const data = await axios.get(
       `https://api.datakeep.civicdays.in/api/search/dataset/?size=${
         state.gridClick === "four" ? state.size * 3 : state.size
-      }&page=${state.page}&sort=${state.sort}&order=${state.order}`
+      }&page=${state.page}&sort=${state.sort}&order=${state.order}&query=${
+        state.searchText
+      }${Query}`
     );
-    handleState({ mainData: [...data.data.results] });
+    handleState({ mainData: [...data.data.results], totals: data.data.total });
   };
   useEffect(() => {
     try {
@@ -88,7 +108,17 @@ const DataProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
-  }, [state.size, state.page]);
+  }, [
+    state.size,
+    state.page,
+    state.order,
+    state.sort,
+    state.searchText,
+    state.sectorfilter,
+    state.geoFilter,
+    state.typeFilter,
+    state.tagFilter,
+  ]);
   const contextValue = {
     state,
     handleState,

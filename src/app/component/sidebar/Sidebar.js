@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import CheckBoxBlock from "../checkboxBlock/page";
-import { useMyContext } from "@/app/context/page";
+import CheckBoxBlock from "../checkboxBlock/CheckboxBlock";
+import { useMyContext } from "@/app/context/Context";
 import Image from "next/image";
 import minus from "../../assets/sidebar/minus.png";
 
@@ -42,7 +42,27 @@ const SideBar = () => {
             {state.checkboxBlockCollapse.sector &&
               state.sidebardata.sector.map((ele, i) => (
                 <div key={i}>
-                  <CheckBoxBlock ele={ele} />
+                  <CheckBoxBlock
+                    ele={ele}
+                    checked={state.sectorfilter.includes(ele)}
+                    handleChange={(e) => {
+                      if (state.sectorfilter.includes(ele)) {
+                        handleState({
+                          sectorfilter: [
+                            ...state.sectorfilter.filter(
+                              (element, i) => element !== e.target.value
+                            ),
+                          ],
+                          page: 1,
+                        });
+                      } else {
+                        handleState({
+                          sectorfilter: [...state.sectorfilter, e.target.value],
+                          page: 1,
+                        });
+                      }
+                    }}
+                  />
                 </div>
               ))}
           </div>
@@ -72,7 +92,27 @@ const SideBar = () => {
             {state.checkboxBlockCollapse.geo &&
               state.sidebardata.geo.map((ele, i) => (
                 <div key={i}>
-                  <CheckBoxBlock ele={ele} />
+                  <CheckBoxBlock
+                    ele={ele}
+                    checked={state.geoFilter.includes(ele)}
+                    handleChange={(e) => {
+                      if (state.geoFilter.includes(ele)) {
+                        handleState({
+                          geoFilter: [
+                            ...state.geoFilter.filter(
+                              (element, i) => element !== e.target.value
+                            ),
+                          ],
+                          page: 1,
+                        });
+                      } else {
+                        handleState({
+                          geoFilter: [...state.geoFilter, e.target.value],
+                          page: 1,
+                        });
+                      }
+                    }}
+                  />
                 </div>
               ))}
           </div>
@@ -102,7 +142,27 @@ const SideBar = () => {
             {state.checkboxBlockCollapse.tags &&
               state.sidebardata.tags.map((ele, i) => (
                 <div key={i}>
-                  <CheckBoxBlock ele={ele} />
+                  <CheckBoxBlock
+                    ele={ele}
+                    checked={state.tagFilter.includes(ele)}
+                    handleChange={(e) => {
+                      if (state.tagFilter.includes(ele)) {
+                        handleState({
+                          tagFilter: [
+                            ...state.tagFilter.filter(
+                              (element, i) => element !== e.target.value
+                            ),
+                          ],
+                          page: 1,
+                        });
+                      } else {
+                        handleState({
+                          tagFilter: [...state.tagFilter, e.target.value],
+                          page: 1,
+                        });
+                      }
+                    }}
+                  />
                 </div>
               ))}
           </div>
@@ -132,7 +192,27 @@ const SideBar = () => {
             {state.checkboxBlockCollapse.type &&
               state.sidebardata.type.map((ele, i) => (
                 <div key={i}>
-                  <CheckBoxBlock ele={ele} />
+                  <CheckBoxBlock
+                    ele={ele}
+                    checked={state.typeFilter.includes(ele)}
+                    handleChange={(e) => {
+                      if (state.typeFilter.includes(ele)) {
+                        handleState({
+                          typeFilter: [
+                            ...state.typeFilter.filter(
+                              (element, i) => element !== e.target.value
+                            ),
+                          ],
+                          page: 1,
+                        });
+                      } else {
+                        handleState({
+                          typeFilter: [...state.typeFilter, e.target.value],
+                          page: 1,
+                        });
+                      }
+                    }}
+                  />
                 </div>
               ))}
           </div>

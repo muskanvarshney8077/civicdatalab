@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import search from "../../assets/navbar/search.png";
 import logo from "../../assets/logo/logo.png";
-import { useMyContext } from "@/app/context/page";
+import { useMyContext } from "@/app/context/Context";
 const Navbar = () => {
   const { state } = useMyContext();
   return (

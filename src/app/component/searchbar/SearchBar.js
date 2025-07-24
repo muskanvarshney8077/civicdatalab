@@ -7,7 +7,7 @@ import gray_two from "../../assets/search/gray-two.png";
 import blue_two from "../../assets/search/blue-two.png";
 import gray_sort from "../../assets/search/gray-sort-az.png";
 import blue_sort from "../../assets/search/blue-sort-az.png";
-import { useMyContext } from "@/app/context/page";
+import { useMyContext } from "@/app/context/Context";
 const Search = () => {
   const { state, handleState } = useMyContext();
   return (
@@ -16,6 +16,10 @@ const Search = () => {
         <div>
           <input
             type="text"
+            value={state.searchText}
+            onChange={(e) => {
+              handleState({ searchText: e.target.value });
+            }}
             placeholder="🔍 Start typing to search for any Dataset"
             className="w-180 rounded px-4 py-2 border border-gray-500 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition"
           />
@@ -57,9 +61,25 @@ const Search = () => {
       <div className="flex items-center gap-4 cursor-pointer">
         <div>
           {state.sortFilter ? (
-            <Image src={blue_sort} height={35} width={35} alt="sort" />
+            <Image
+              src={blue_sort}
+              height={35}
+              width={35}
+              alt="sort"
+              onClick={() => {
+                handleState({ order: "asc", sortFilter: false });
+              }}
+            />
           ) : (
-            <Image src={gray_sort} height={35} width={35} alt="sort" />
+            <Image
+              src={gray_sort}
+              height={35}
+              width={35}
+              alt="sort"
+              onClick={() => {
+                handleState({ order: "desc", sortFilter: true });
+              }}
+            />
           )}
         </div>
         <div>
@@ -70,10 +90,8 @@ const Search = () => {
             }}
             className="w-50 rounded px-1 py-2 border border-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 transition "
           >
-            <option value="recent" disabled>
-              Latest Updated
-            </option>
-            <option value="alphabetical)">Alphabetical</option>
+            <option value="recent">Latest Updated</option>
+            <option value="alphabetical">Alphabetical</option>
           </select>
         </div>
       </div>

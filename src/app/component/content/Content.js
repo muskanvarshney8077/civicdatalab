@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import CardGridFour from "../cardGridFour/page";
-import { useMyContext } from "@/app/context/page";
-import CardGridTwo from "../cardGridTwo/page";
-import Pagination from "../pagination/page";
+import CardGridFour from "../cardGridFour/CardGridFour";
+import { useMyContext } from "@/app/context/Context";
+import CardGridTwo from "../cardGridTwo/CardGridTwo";
+import Pagination from "../pagination/Pagination";
 
 const Content = () => {
   const { state } = useMyContext();
