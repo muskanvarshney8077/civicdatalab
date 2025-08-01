@@ -4,14 +4,14 @@ Tech Stack and Tools:- Next JS and Vscode (CSS:-Tailwind)
 
 ## Deployment
 
-View deployed app here [Civic Data Lab](https://civivdatalab.netlify.app/)
+View deployed app here [Create Exp](https://createexp.netlify.app/)
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/muskanvarshney8077/civicdatalab.git
+  git clone https://github.com/muskanvarshney8077/createexp.git
 ```
 
 Go to the project directory
